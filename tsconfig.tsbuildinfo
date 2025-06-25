@@ -1,0 +1,1 @@
+{"root":["./src/connecmongo.ts","./src/connectprisma.ts","./src/index.ts","./src/model.ts"],"version":"5.8.3"}

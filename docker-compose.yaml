@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo_dump:/data/db
+  postgres:
+    image: postgres
+    container_name: postgres
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypass
+      POSTGRES_DB: mydatabase
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_dump:/var/lib/postgresql/data
+  backend:
+    image: backend_app
+    container_name: backend_app
+    depends_on:
+       - mongodb
+       - postgres
+    ports:
+      - 3000:3000
+    environment:
+      PORT: "3000"
+      MONGOSE_URL: "mongodb://mongodb:27017/my-data"
+      DATABASE_URL: "postgres://myuser:mypass@postgres:5432/mydatabase"
+volumes:
+      postgres_dump:
+      mongo_dump:
+
+
+  

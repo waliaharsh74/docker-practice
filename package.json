@@ -12,7 +12,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "Example Node backend with MongoDB, PostgreSQL and Docker",
   "dependencies": {
     "@prisma/client": "^6.10.1",
     "@types/cors": "^2.8.19",
